@@ -1,0 +1,33 @@
+#Drawing A Square
+
+import turtle
+
+def main():
+  t = turtle.Turtle()
+  t.forward(50)#move forward 50 pixels
+  t.left(90)#turns left 90 degrees
+  t.forward(50)
+  t.left(90)
+  t.forward(50)
+  t.left(90)
+  t.forward(50)
+  t.left(90)
+
+  #t.reset - clears the canvas and puts the turtle back at its starting position
+  
+  #t.clear - clears the screen and leaves the turtle where it is at
+  
+  #We can use 'up' to lift the pen off the page (stops drawing) and 'down' to start drawing
+
+  #Draw 2 Lines
+  t.reset()
+  t.color("gold")
+  t.backward(100)
+  t.up()
+  t.right(90)
+  t.forward(20)
+  t.left(90)
+  t.down()
+  t.forward(100)
+
+main()
