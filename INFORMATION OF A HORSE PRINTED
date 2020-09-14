@@ -1,0 +1,136 @@
+Date: 2018-01-31
+ Program: DemoHorses
+ Purpose: Demostrate the use of Horse.java and RaceHorse.java. Features a little interactive session with the console; although, the code looks kind of messy.
+*/
+
+import static java.lang.System.out;
+import java.util.Scanner;
+
+public class Main
+{
+ public static void main(String[] args)
+ {
+  Scanner input = new Scanner(System.in);
+  String name, color, mode = "NEW";
+  Horse horse1 = new Horse(); // Need three different horse objects because of how the program is supposed to work (it needs to be able to switch between...
+  RaceHorse horse2 = new RaceHorse(); // ...a Horse and a RaceHorse, and obviously I can't just convert from a RaceHorse to a Horse.
+  Horse horseInUse = new Horse(); // Technically I don't need this third Horse but it makes it easier down the road so I don't need to put in a RaceHorse check for every single if statement.
+  int year, races, modeSelect;
+  
+  while (!(mode.equalsIgnoreCase("EXIT")))
+  {
+   /*  ======================================
+    NEW HORSE - Creating a brand new horse; it overwrites the current horse
+    ====================================== */
+   if (mode.equalsIgnoreCase("NEW")) 
+   {
+    out.print("Enter the name of the horse:");
+    name = input.nextLine();
+    out.print("Enter the color of the horse:");
+    color = input.nextLine();
+    out.print("Is this horse a race horse? (Y/N)");
+    String bool = input.nextLine();
+    out.print("Enter the birth year of the horse:");
+    year = input.nextInt();
+    
+    while (!(bool.equalsIgnoreCase("Y")) && !(bool.equalsIgnoreCase("N")))
+    {
+     out.print("Is this horse a race horse? (Y/N)");
+     bool = input.nextLine();
+    }
+    if (bool.equalsIgnoreCase("Y"))
+    {
+      out.print("Enter the number of races this horse has competed in:");
+      races = input.nextInt();
+      horse2 = new RaceHorse(name,color,year,races); 
+      horseInUse = horse2;
+      horse1 = new Horse();
+    }
+    else
+    {
+      horse1 = new Horse(name,color,year);
+      horseInUse = horse1;
+      horse2 = new RaceHorse();
+    }
+   }
+   
+   /*  ======================================
+    NEW NAME - Rename the current horse
+    ====================================== */
+   if (mode.equalsIgnoreCase("NAME"))
+   {
+    out.print("Enter the new name for the horse:");
+    String _name = input.nextLine();
+    _name = input.nextLine();
+    horseInUse.setName(_name);
+    out.println("New name set!");
+   }
+   
+   /*  ======================================
+    NEW YEAR - Re-enter the birth year
+    ====================================== */
+   if (mode.equalsIgnoreCase("YEAR"))
+   {
+    out.print("Enter the new birth year for the horse:");
+    horseInUse.setBirthYear(input.nextInt());
+    out.println("New birth year set!");
+   }
+    
+    
+   /*  ======================================
+    NEW COLOR - Recolor the current horse
+    ====================================== */
+   if (mode.equalsIgnoreCase("COLOR"))
+   {
+    out.print("Enter the new color for the horse:");
+    String _color = input.nextLine();
+    _color = input.nextLine();
+    horseInUse.setColor(_color);
+    out.println("New color set!");
+   }
+   
+   /*  ======================================
+    NEW RACES - Re-enter the total races
+    ====================================== */
+   if (mode.equalsIgnoreCase("RACES"))
+   {
+    if (!(horseInUse.getClass().getSimpleName().equalsIgnoreCase("RaceHorse"))) // Checks the name of the CLASS of the horse - if it's a RaceHorse, then run the nested code.
+    {
+     out.println("You can't do that; " + horseInUse.getName() + " is not a race horse!");
+     return;
+    }
+    out.print("Enter the new total races for the horse:");
+    horse2.setRaces(input.nextInt());
+    out.println("New total races set!");
+   }
+   
+   /*  ======================================
+    STATS - Print stats of the current horse
+    ====================================== */
+   if (mode.equalsIgnoreCase("STAT")) // 
+   { 
+    out.println("Horse's Name: " + horseInUse.getName() + "\nColor: " + horseInUse.getColor() + "\nBirth Year: " + horseInUse.getBirthYear()); // A .toString() method would be way better
+    if (horseInUse.getClass().getSimpleName().equalsIgnoreCase("RaceHorse")) out.println("Competed in " + horse2.getRaces() + " races.");
+   }
+   
+   /*  ======================================
+    CYCLE - Reprepares console for interaction
+    ====================================== */
+   out.println("\n===== HORSE OWNER SIMULATOR 2018 =====\n[1] - New horse; replaces your current one!\n[2] - Rename horse\n[3] - Re-enter birth year for the horse\n[4] - Recolor horse\n[5] - Re-enter number of races competed in (Race Horses only!)\n[6] - Print horse's information\n[7] - Exit");
+   out.print("Enter a mode number:");
+   modeSelect = input.nextInt();
+   if (modeSelect == 1) mode = "NEW"; // Jeez, this is REALLY inefficient
+   else if (modeSelect == 2) mode = "NAME";
+   else if (modeSelect == 3) mode = "YEAR";
+   else if (modeSelect == 4) mode = "COLOR";
+   else if (modeSelect == 5) mode = "RACES";
+   else if (modeSelect == 6) mode = "STAT";
+   else if (modeSelect == 7) mode = "EXIT";
+   else mode = "Uhhhh what";
+   out.println(""); // Blank line
+  }
+  out.println("Goodbye!");
+  input.close();
+ }
+}
+// Why is the identing in Dr. Java so tiny? I wrote this whole thing in Notepad++ and all the indents turned from 8 spaces to 1 per tab.
