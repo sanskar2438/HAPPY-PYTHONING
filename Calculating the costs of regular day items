@@ -1,0 +1,15 @@
+#price and amount codes
+price_shoes = float(input("How much do the shoes cost?"))
+price_pants = float(input("How much do the pants cost?"))
+price_shirts = float(input("How much do the shirts cost?"))
+
+shoes = float(input("how many shoes do you want?"))
+pants = float(input("how many pants do you want?"))
+shirts = float(input("how many shirts do you want?"))
+
+#costs and print codes
+total = (price_shoes * shoes + price_pants * pants + price_shirts * shirts)
+total_tax = total + (total * 0.095)
+total_outfits = (shoes * pants * shirts)
+print("Your shopping trip has cost you ${}, but your friends will say \"Wow!\" when they see you've got {} new outfits" .format(total_tax, total_outfits))
+
