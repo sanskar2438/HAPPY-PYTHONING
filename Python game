@@ -1,0 +1,167 @@
+
+global blueKey
+bluekey = "Lost"
+global gunFound 
+gunFound = "No"
+global BUTTKilled
+BUTTKilled = "No"
+
+
+def startScreen():
+    print("__________            ___.   .__")           
+    print("\____    /____   _____\_ |__ |__| ____ ")    
+    print("  /     //  _ \ /     \| __ \|  |/ __ \  ")  
+    print(" /     /(  <_> )  Y Y  \ \_\ \  \  ___/  ")  
+    print("/_______ \____/|__|_|  /___  /__|\___  >  ") 
+    print("        \/           \/    \/        \/   ") 
+    print("                                         ")  
+    print("  ____   ______ ____ _____  ______   ____  ")
+    print("_/ __ \ /  ___// ___\\__  \ \____ \_/ __ \ ")
+    print("\  ___/ \___ \\  \___ / __ \|  |_> >  ___/ ")
+    print(" \___  >____  >\___  >____  /   __/ \___  >")
+    print("     \/     \/     \/     \/|__|        \/")
+    print("You are doing your morning poo round delivering toilet paper when you notice a house that you have never seen before. You walk up the drive and posted the loo roll through the letter box, as you do so a stingky bottom shoots through the letter box and slams your head into the door knocking you unconscious.")
+    print("")
+    print("You awake in a strange room that smells on the other side of the front door.")
+    print("")
+    room1()
+
+
+def room1():
+    global blueKey
+    
+    print("")
+    print("--------------------------------------------------")
+    print("")
+    print("The room has a Blue front door and a Red door leading deeper into the house")
+    print("")   
+    choice=input("Which door would you like to open? Blue or Red?")
+    if choice == "Red":
+        room2()
+    elif choice == "Blue":
+        if blueKey=="Found":
+            escape()
+        else:
+            print("The Blue door is locked, and you need a pee you'll need to find a Blue Key if you are going to escape!")
+            print("")
+            room1()
+    else:
+        print("YOU CAN ONLY CHOOSE 'Blue' OR 'Red', try again!")
+        room1()
+
+def room2():
+    print("")
+    print("--------------------------------------------------")
+    print("")
+    print("You find yourself in a dark room with three doors. One is Red, the other is Green and the final door is Pink.")
+    choice = input("Which door will you go through?, Red, Green or Pink?")
+    if choice == "Red":
+        room1()
+    elif choice == "Green":
+        room3()
+    elif choice == "Pink":
+        room4()
+    else:
+        print("YOU CAN ONLY CHOOSE 'Red' OR 'Green' OR 'Pink', try again!")
+        room2()
+
+def room3():
+    global gunFound
+    
+    print("")
+    print("--------------------------------------------------")
+    print("")
+    
+    if gunFound == "No":
+        print("You find yourself in a dark room with the walls covered in pee. On the floor a shotgun is lying  next to a trapdoor, in the corner a flight of stairs leads up to a Yellow door.")
+        choice = input("Green door, Gun, Trapdoor or Stairs?")
+        if choice == "Gun":
+            print("You pick up the gun")
+            gunFound = "Yes"
+            room3()
+        elif choice == "Trapdoor":
+            print("You heave open the trapdoor and a thousand Butts swarm out to devour your corpse")
+            gameOver()
+        elif choice == "Stairs":
+            print("You run up the stairs and through the Yellow door, you pee yourself!")
+            gameOver()
+        elif choice == "Green door":
+            room2()
+        else:
+            print("YOU CAN ONLY CHOOSE 'Green door' OR 'Gun' OR 'Trapdoor' or 'Stairs' try again!")
+            room3()
+    else:
+        print("You find yourself in a dark room with the walls covered in pee. On the floor is a trapdoor, in the corner a flight of stairs leads up to a Yellow door.")
+        choice = input("Green door, Trapdoor or Stairs?")
+        if choice == "Trapdoor":
+            print("You heave open the trapdoor and a thousand Butts swarm out to devour your corpse")
+            gameOver()
+        elif choice == "Stairs":
+            print("You run up the stairs and through the Yellow door,you pee yourself!")
+            gameOver()
+        elif choice == "Green door":
+            room2()
+        else:
+            print("YOU CAN ONLY CHOOSE 'Green door' OR 'Trapdoor' or 'Stairs' try again!")
+            room3()          
+
+def room4():
+    global gunFound
+    global zombieKilled
+    global blueKey
+    
+    print("")
+    print("--------------------------------------------------")
+    print("")
+    
+    if zombieKilled == "No":
+        print("The Pink door creaks open to reveal a walking BUTT intent on eating you alive!")
+        choice=input("Will you Fight or Run?")
+        print("")
+        print("--------------------------------------------------")
+        print("")
+        if choice == "Fight" and gunFound=="No":
+            print("You have no weapons and are powerless to resist as the BUTT eats you!")
+            gameOver()
+        elif choice == "Fight" and gunFound == "Yes":
+            print("You shoot the BUTT in the hole killing it instantly, you take a blue key from it's cheeks")
+            print("")
+            blueKey = "Found"
+            zombieKilled = "Yes"
+            print("The room is empty except the corpse of the BUTT king, you exit back through the Pink door")
+            room2()
+        elif choice == "Run":
+            room2()
+        else:
+            print("YOU CAN ONLY CHOOSE 'Run' OR 'Fight', try again!")
+            room4()
+    else:
+        print("The room is empty except the corpse of the BUTT king, you exit back through the Pink door")
+        room2()
+        
+def escape():
+    print("")
+    print("--------------------------------------------------")
+    print("")
+    print("You put the Blue Key in the lock and the door swings open as you sprint down the path to freedom!")
+    print("You managed to escape from the BUTT king, this time!")
+    
+        
+def gameOver():
+    print("      ________    _____      _____  ___________")
+    print(" /  _____/   /  _  \    /     \ \_   _____/")
+    print("/   \  ___  /  /_\  \  /  \ /  \ |    __)_ ")
+    print("\\    \\_\\  \\/    |    \\/    Y    \\|        \\")
+    print(" \______  /\____|__  /\____|__  /_______  /")
+    print("        \/         \/         \/        \/ ")
+    print("____________   _________________________   ")
+    print("\_____  \   \ /   /\_   _____/\______   \  ")
+    print(" /   |   \   Y   /  |    __)_  |       _/  ")
+    print("/    |    \     /   |        \ |    |   \  ")
+    print("\_______  /\___/   /_______  / |____|_  / ") 
+    print("        \/                 \/         \/")
+    choice = input("You suck! Do you want to restart the game? Yes or No")
+    if choice == "Yes":
+        startScreen()
+        
+startScreen()
