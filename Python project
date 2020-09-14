@@ -1,0 +1,72 @@
+#python 1.1
+print('write 3 numbers')
+a = int(input())
+b = int(input())
+c = int(input())
+print('this is their sum')
+print(a + b + c)
+
+#python 1.2
+# Read the numbers b and h like this:
+print('write the length of the base and the height of a triangle')
+b = int(input())
+h = int(input())
+# Print the result with print()
+print('this is the area of the triangle')
+print(0.5 * b * h)
+
+#python 1.3
+# Read a string:
+print('write your name')
+a = input()
+# Print a string:
+print('hello,' + a + '!')
+
+#python 1.4
+print('write a number')
+# Read an integer:
+a = int(input())
+# Print a value:
+print('this is its previous number')
+print(a - 1)
+print('this is its next number')
+print(a + 1)
+
+#python 1.5
+# Read the numbers like this:
+print('write to numbers to get the result of their division')
+n = int(input())
+k = int(input())
+# Print the result with print()
+print('this is the result of their division')
+print(n / k)
+print('this is the result of their integer division')
+print(n // k)
+print('this is the remainder of their integer division')
+print(n % k)
+
+#python 1.6
+# Read an integer:
+print('write a number of seconds')
+a = int(input())
+# Print a value:
+print('this is the number of hours in those seconds')
+print(a // 3600)
+print('this is the number of minutes in those seconds')
+print(a // 60)
+
+#python 1.7
+# Read an integer:
+print('write a number of hours, minutes, and seconds')
+hours1 = int(input())
+minutes1 = int(input())
+seconds1 = int(input())
+print('write a greater number of hours, minutes, and seconds')
+hours2 = int(input())
+minutes2 = int(input())
+seconds2 = int(input())
+# Print a value:
+print('this is how much time passed between them')
+print(hours2 - hours1)
+print(minutes2 - minutes1)
+print(seconds2- seconds1)
